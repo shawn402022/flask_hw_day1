@@ -4,7 +4,7 @@
 
 {% block main %}
 <h1>Cars</h1>
-<form action= "{{ url_for('create_car') }}" method="POST">
+<form action= "{{ url_for('blog.create_car') }}" method="POST">
     <div class="mb-3">
         <label for="inputModel" class="form-label">Model</label>
         <input type="text" class="form-control" id="inputModel" name="inputModel">
@@ -29,23 +29,25 @@
   </form>
 {% for car in cars%}
     <div class="card">
-        <div class="card-make">
-            <h3><a href="{{url_for('car_by_id', id=car.id) }}">{{ car.make }}</a></h3>
-        </div>
-        <div class="card-model">
-            <h5 class = "card-make"></h5>
-            <p>{{ car.model }}</p>
-        </div>
-        <div class="card-year">
-            <p>{{ car.year}}</p>
-        </div>
-        <div class="card-color">
-            <p>{{ car.color }}</p>
-        </div>
-        <div class="card-price">
-            <p>{{ car.price }}</p>
-        </div>
-        This post brought to you by: {{car.user.user_name}}
+        <div>
+            <div class="card-make">
+                <h3><a href="{{url_for('blog.car_by_id', id=car.id) }}">{{ car.make }}</a></h3>
+            </div>
+            <div class="card-model">
+                <h5 class = "card-make"></h5>
+                <p>{{ car.model }}</p>
+            </div>
+            <div class="card-year">
+                <p>{{ car.year}}</p>
+            </div>
+            <div class="card-color">
+                <p>{{ car.color }}</p>
+            </div>
+            <div class="card-price">
+                <p>{{ car.price }}</p>
+            </div>
+            This post brought to you by: {{car.user.user_name}}
+        </div> 
     </div>
 
 {% endfor %}

@@ -20,4 +20,3 @@ class Car(db.Model):
     date_created = db.Column(db.DateTime, default=datetime.utcnow)
     user_id = db.Column(db.Integer, db.ForeignKey('user.id'))
     user=db.relationship('User',backref='Car')
-

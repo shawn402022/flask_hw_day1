@@ -1,28 +1,8 @@
-from app import app, db
+from. import bp as app
+from app import db
 from flask import render_template, request, redirect ,url_for
-from app.models import Car
-
-from flask import render_template
-
-@app.route('/')
-def home():
-    return render_template('Home.html')
-
-@app.route('/about')
-def about():
-    return render_template('About.html')
-
-# @app.route('/blog')
-# def blog():
-#     return render_template('Blog.html')
-
-# @app.route('/register')
-# def register():
-#     return render_template('Register.html')
-
-# @app.route('/login')
-# def login():
-#     return render_template('Login.html')
+# from app.models import Car
+from. models import Car
 
 @app.route('/car')
 def cars():
@@ -45,5 +25,5 @@ def create_car():
     db.session.add(new_car)
     db.session.commit()
     
-    return redirect(url_for('cars')) 
+    return redirect(url_for('blog.cars')) 
 
