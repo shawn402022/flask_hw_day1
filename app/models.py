@@ -19,3 +19,5 @@ class Car(db.Model):
     price = db.Column(db.Integer)
     date_created = db.Column(db.DateTime, default=datetime.utcnow)
     user_id = db.Column(db.Integer, db.ForeignKey('user.id'))
+    user=db.relationship('User',backref='Car')
+
