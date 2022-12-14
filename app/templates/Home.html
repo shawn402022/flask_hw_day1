@@ -4,5 +4,9 @@
 
 {% block main %}
 <h1>We list so you can car</h1>
-<p>Welcome to Carlist</p>
+{% if user.is_authenticated %}
+<p>Welcome to Carlist {{user.user_name}}</p>
+{% else %}
+    <p>Please <a href="{{url_for('auth.login') }}">Login</a></p>
+{% endif %}
 {% endblock main %}  

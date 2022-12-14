@@ -1,6 +1,7 @@
 from. import bp as app
 from app import db
 from flask import render_template, request, redirect ,url_for
+from flask_login import current_user
 # from app.models import Car
 from. models import Car
 
@@ -21,7 +22,7 @@ def create_car():
     year =request.form['inputYear']
     color = request.form['inputColor']
     price =request.form['inputPrice']
-    new_car = Car(model=model, make=make, year=year, color=color, price=price, user_id=1)
+    new_car = Car(model=model, make=make, year=year, color=color, price=price, user_id=current_user.id)
     db.session.add(new_car)
     db.session.commit()
     
