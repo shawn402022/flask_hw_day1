@@ -1,3 +1,4 @@
+from.import bp as app
 from app import db, login_manager
 from datetime import datetime
 from flask_login import UserMixin
@@ -32,3 +33,12 @@ class Car(db.Model):
 @login_manager.user_loader
 def load_user(user_id):
     return User.query.get(user_id)
+
+def hash_passwords():
+    users = User.query.filter(User.id <= 6).all()
+    print(users)
+    for user in users:
+        user.hash_my_password(user.password)
+        db.session.add(user)
+
+    db.session.commit()

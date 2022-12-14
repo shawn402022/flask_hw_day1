@@ -1,4 +1,4 @@
-from flask import Flask
+from flask import Flask, flash, redirect, url_for
 from config import Config
 from flask_sqlalchemy import SQLAlchemy
 from flask_migrate import Migrate
@@ -27,3 +27,9 @@ app.register_blueprint(auth_bp)
 
 # from app.blueprints.api import bp as api_bp
 # app.register_blueprint(api_bp)
+
+login_manager.login_view = 'auth.login'
+login_manager.login_message = 'need permissions for this page'
+login_manager.login_message_category = 'danger'
+
+
